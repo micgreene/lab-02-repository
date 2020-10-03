@@ -9,9 +9,12 @@ $.ajax('./data/page-1.json').then(function (photos) {
     let $newPhoto = $photoTemplate.clone();
     $newPhoto.removeAttr('id');
     $newPhoto.id = photo.keyword;
-    $newPhoto[0].childNodes[1].textContent = photo.title;
-    $newPhoto[0].childNodes[3].src = photo.image_url;
-    $newPhoto[0].childNodes[5].textContent = photo.description;
+    $newPhoto.find('h2').text(photo.title);
+    $newPhoto.find('img').attr('src', photo.image_url);
+    $newPhoto.find('p').text(photo.description);
+    // $newPhoto[0].childNodes[1].textContent = photo.title;
+    // $newPhoto[0].childNodes[3].src = photo.image_url;
+    // $newPhoto[0].childNodes[5].textContent = photo.description;
     photoArray.push($newPhoto);
     $gallery.append($newPhoto);
   });
